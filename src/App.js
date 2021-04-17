@@ -19,7 +19,7 @@ let mapStateToProps = (state) => {
 let App = (props) =>  {
   
   useEffect(()=>{
-    
+    // debugger;
   }, [props.isAuth])
 
   return (

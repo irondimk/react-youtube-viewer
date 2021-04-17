@@ -3,6 +3,7 @@ import { getUsers } from "../api/userApi";
 const AUTH = 'profileReducer/AUTH';
 const UNAUTH = 'profileReducer/UNAUTH';
 const ADD_FAVORITES = 'profileReducer/ADD-FAVORITES';
+const ADD_REQUESTS = 'profileReducer/ADD-REQUESTS';
 
 let initialState = {
     isAuth: false,
@@ -13,7 +14,8 @@ let initialState = {
 let profileReducer = (state = initialState, action) => {
     switch(action.type){
         case AUTH: {
-            return {...state, login: action.login, isAuth: true}
+            
+            return {...state, login: action.login, isAuth: true, profileRequests: action.arrRequests}
         } 
         case UNAUTH: {
             return {...state, login: null, isAuth: false, profileRequest: null}
@@ -26,9 +28,10 @@ let profileReducer = (state = initialState, action) => {
 }
 
 
-const auth = (login) => {
+const auth = (login, arrRequests) => {
     return {
        type: AUTH,
+       arrRequests,
        login
     }
 }
@@ -47,6 +50,8 @@ const addFavorites = (request) => {
 }
 
 
+
+
 export const addNewFavoritesRequest = (request, login, index) => {
     return (dispatch) => {
         dispatch(addFavorites(request));
@@ -60,19 +65,38 @@ export const authUser = (name, password) => {
         let response = getUsers();
         for(let key in response){
             if((response[key].login == name) && (response[key].password == password)){
-                dispatch(auth(response[key].login))
-                localStorage.setItem("username", response[key].login)
+                localStorage.setItem("username", response[key].login);
+                let arrRequests = [];
+                for(let keyLS in localStorage){
+                   if((keyLS).split("-")[0] == name){
+                    arrRequests.push(localStorage[keyLS]);
+                   }
+                }
+                dispatch(auth(response[key].login, arrRequests));
             }
         }
+    }
+}
+
+export const loadApp = () => {
+    return (dispatch) => {
+
+    }
+}
+const REMOVE_VIDEOS = 'REMOVE-VIDEOS';
+
+const clearVideos = () => {
+    return {
+        type: REMOVE_VIDEOS
     }
 }
 
 export const unAuthUser = () => {
     
     return (dispatch) => {
-        debugger;
         dispatch(unauth());
         localStorage.removeItem("username");
+        dispatch(clearVideos());
     }
 }
 

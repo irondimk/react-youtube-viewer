@@ -2,12 +2,13 @@ import { videoApi } from "../api/videoApi";
 
 const SET_VIDEOS = 'youtubeReducer/SET-VIDEOS';
 const EDIT_VIEW_VIDEOS = 'youtubeReducer/EDIT-VIEW-VIDEOS';
+const REMOVE_VIDEOS = 'REMOVE-VIDEOS';
 
 let initialState = {
     videos: null,
     requestsListCount: 12,
     isHaveVideos: false,
-    isListVisionVideo: true,
+    // isListVisionVideo: true,
     typesSorting: null,
     valueLastRequest: null,
     countResults: 0,
@@ -21,6 +22,9 @@ let youtubeReducer = (state = initialState, action) => {
         }
         case EDIT_VIEW_VIDEOS: {
             return {...state, isListShowVideo: !state.isListShowVideo}
+        }
+        case REMOVE_VIDEOS: {
+            return {...state, videos: null, isHaveVideos: false}
         }
     }
     return state;
