@@ -1,0 +1,39 @@
+.header{
+    background: #FFFF;
+}
+
+.header__content{
+    width: 1040px;
+    padding: 20px 15px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__logo{
+    width: 48px;
+    height: 48px;
+}
+.header__left{
+    display: flex;
+}
+
+.header__active-link{
+    border-bottom: 3px solid #1390E5;;
+}
+
+.header__link{
+    color: #1390E5;
+    font-size: 18px;
+    line-height: 28px;
+    margin-left: 40px;
+    padding-bottom: 33px;
+}
+
+.header__menu-items{
+    margin-top: 8px;
+}
+
+.header__right{
+    margin-top: 8px;
+}

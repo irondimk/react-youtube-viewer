@@ -1,0 +1,30 @@
+.video{
+    display: flex;
+}
+
+.video__img-block{
+    width: 25%;
+    height: 150px;
+    margin-bottom: 20px;
+    margin-right: 14px;
+}
+.video__img{
+    width: 100%;
+}
+.video__title{
+    color: #000000;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 30px;
+    margin-bottom: 12px;
+}
+
+.video__channel{
+    color: rgba(23, 23, 25, 0.3);
+    font-size: 20px;
+    line-height: 20px;
+}
+
+.video__text{
+    width: 70%;
+}

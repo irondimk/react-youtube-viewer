@@ -1,24 +1,23 @@
+import { BrowserRouter, Route } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
+import Login from './components/Login/Login';
+import Header from './components/Header/Header.js';
+import FindContainer from './components/Find/FindContainer';
+import Favorites from './components/Favorites/Favorites';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <BrowserRouter>
+      <Header/>
+      <div className="content">
+        <Route path="/find" render={()=> <FindContainer/>} />
+        <Route path="/favorites" render={()=> <Favorites/>} />
+      </div>
+    </BrowserRouter>
+    
+    // <Login/>
   );
 }
 
