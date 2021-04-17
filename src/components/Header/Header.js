@@ -2,8 +2,10 @@ import React from 'react';
 import './Header.css';
 import logo from '../../asstets/img/logo.svg'
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import {unAuthUser} from '../../redux/profileReducer';
 
-let Header = () => {
+let Header = (props) => {
     return (
         <header className="header">
             <div className="header__content">
@@ -19,11 +21,17 @@ let Header = () => {
                 </nav>
             </div>
             <div className="header__right">
-            <NavLink to="/login" activeClassName="header__active-link" className="header__link">Выйти</NavLink>
+            <a href="#" onClick={props.unAuthUser} activeClassName="header__active-link" className="header__link">Выйти</a>
             </div>
             </div>
         </header>
     )
 }
 
-export default Header;
+// let mapStateToProps = (state) => {
+//     return{
+//         login: state.profile.login
+//     }
+// }
+
+export default connect(null, {unAuthUser})(Header);

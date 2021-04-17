@@ -1,7 +1,7 @@
 import { videoApi } from "../api/videoApi";
 
-export const SET_VIDEOS = 'youtubeReducer/SET-VIDEOS';
-const SET = 'youtubeReducer/SET';
+const SET_VIDEOS = 'youtubeReducer/SET-VIDEOS';
+const EDIT_VIEW_VIDEOS = 'youtubeReducer/EDIT-VIEW-VIDEOS';
 
 let initialState = {
     videos: null,
@@ -10,7 +10,8 @@ let initialState = {
     isListVisionVideo: true,
     typesSorting: null,
     valueLastRequest: null,
-    countResults: 0
+    countResults: 0,
+    isListShowVideo: true
 }
 
 let youtubeReducer = (state = initialState, action) => {
@@ -18,16 +19,16 @@ let youtubeReducer = (state = initialState, action) => {
         case SET_VIDEOS: {
             return {...state, valueLastRequest: action.nameRequest, isHaveVideos: true, videos: action.videos, countResults: action.countResults }
         }
-        case SET: {
-            return {...state, isHaveVideos: true}
+        case EDIT_VIEW_VIDEOS: {
+            return {...state, isListShowVideo: !state.isListShowVideo}
         }
     }
     return state;
 }
 
-const setHaveVide = () => {
+const editType = () => {
     return {
-        type: SET
+        type: EDIT_VIEW_VIDEOS
     }
 }
 
@@ -40,8 +41,8 @@ const setVideos = (videos, nameRequest, countResults) => {
     }
 }
 
-export const downloadSnippetVideo = (nameRequest, sizeRequest) => {
 
+export const downloadSnippetVideo = (nameRequest, sizeRequest) => {
     return async (dispatch) => {
         let response = await videoApi.getVideos(nameRequest, sizeRequest);
         if(response.status == 200){
@@ -51,9 +52,9 @@ export const downloadSnippetVideo = (nameRequest, sizeRequest) => {
 }
 
 
-export const test = () => {
+export const editTypeViewVideo = () => {
     return (dispatch) => {
-        dispatch(setHaveVide());
+        dispatch(editType());
     }
 }
 

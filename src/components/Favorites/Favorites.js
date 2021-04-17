@@ -1,15 +1,22 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './Favorites.css';
 
 let Favorites = (props) => {
-    console.log(123);
     return(<div className="favorites">
-            1231231312
+            {props.requests}
         </div>
         )
     
 }
 
-export default Favorites;
+
+let mapStateToprops = (state) => {
+    return{
+        requests: state.profile.profileRequests
+    }
+}
+
+export default connect(mapStateToprops, {})(Favorites);
 
 

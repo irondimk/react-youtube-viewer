@@ -65,7 +65,7 @@
 
 .fullfind__input-block{
     width: 100%;
-    
+    position: relative;
 }
 
 .fullfind__input{
@@ -76,6 +76,9 @@
     border: 1px solid rgba(23, 23, 25, 0.8);   
     border-radius: 5px 0 0 5px;
     width: 100%;
+    /* background-image: url('../../asstets/img/heart.svg');
+    background-position: right;
+    background-repeat: no-repeat; */
 }
 
 .fullfind__count-results{
@@ -84,4 +87,25 @@
 
 .fullfind__count-results-num{
 
+}
+
+.fullfind__heart{
+    position: absolute;
+    top: 16px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.fullfind__description{
+    display: flex;
+    justify-content: space-between;
+}
+
+.fullfind__toggles-view{
+    display: flex;
+}
+
+.video__wrapper-grid{
+    display: flex;
+    flex-wrap: wrap;
 }

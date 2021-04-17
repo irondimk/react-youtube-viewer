@@ -5,20 +5,43 @@ import Login from './components/Login/Login';
 import Header from './components/Header/Header.js';
 import FindContainer from './components/Find/FindContainer';
 import Favorites from './components/Favorites/Favorites';
+import { connect } from 'react-redux';
+import { useEffect } from 'react';
+import { authUser } from './redux/profileReducer';
 
-function App() {
+
+let mapStateToProps = (state) => {
+  return{
+    isAuth: state.profile.isAuth
+  }
+}
+
+let App = (props) =>  {
+  
+  useEffect(()=>{
+    
+  }, [props.isAuth])
+
   return (
-
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    {
+      props.isAuth ? 
+      <div> 
       <Header/>
       <div className="content">
         <Route path="/find" render={()=> <FindContainer/>} />
         <Route path="/favorites" render={()=> <Favorites/>} />
-      </div>
+      </div> 
+      </div> 
+      : <Login/>
+    }
+      
     </BrowserRouter>
     
-    // <Login/>
+    // 
   );
 }
 
-export default App;
+
+
+export default connect(mapStateToProps, {})(App);

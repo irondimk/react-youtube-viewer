@@ -1,7 +1,12 @@
-.video{
+.video-list{
     display: flex;
 }
-
+.video-grid{
+    display: inline-block;
+    width: 20%;
+    margin-bottom: 60px;
+    margin-right: 40px;
+}
 .video__img-block{
     width: 25%;
     height: 150px;
@@ -27,4 +32,25 @@
 
 .video__text{
     width: 70%;
+}
+
+.video__img-block-grid{
+    width: 100%;
+    margin-right: 20px;
+}
+
+.video__text-grid{
+    width: 100%;
+}
+
+.video__title-grid{
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 6px;
+}
+
+.video__channel-grid{
+    font-size: 14px;
+    line-height: 14px;
+    color: rgba(23, 23, 25, 0.3);
 }

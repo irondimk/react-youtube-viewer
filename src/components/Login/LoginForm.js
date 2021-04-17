@@ -8,7 +8,7 @@ import FormStateToRedux from '../../redux/FormStateToRedux';
 let LoginForm = (props) => {
 
     let onSubmit = (value) => {
-        
+        props.authUser(value.login, value.password);
     };
 
     return (
