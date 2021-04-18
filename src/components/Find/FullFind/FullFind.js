@@ -65,6 +65,8 @@ let FullFind = (props) => {
             title={"Сохранить запрос"}
             valueRequest={props.valueLastRequest}
             count = {12}
+            name = ""
+            orderType = "relevance"
             addNewFavoritesRequest={props.addNewFavoritesRequest}
             index={props.index}
             login={props.login}

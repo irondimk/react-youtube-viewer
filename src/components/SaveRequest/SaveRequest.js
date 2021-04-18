@@ -15,6 +15,8 @@ let SaveRequest = (props) => {
                 action = {props.addNewFavoritesRequest}
                 index = {props.index}
                 login = {props.login}
+                name = {props.name}
+                orderType = {props.orderType}
                 />
             </div>
         </div>

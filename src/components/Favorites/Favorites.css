@@ -1,5 +1,55 @@
 .favorites{
         width: 1040px;
         margin: 0 auto;
-        padding: 60px 60px;
+        padding: 60px 0;
+}
+
+.favorites__title{
+        font-size: 28px;
+        line-height: 40px;
+        color: #000000;
+        margin-bottom: 40px;
+}
+
+.favorites__item{
+        background: #FFFF;
+        border: 1px solid #dadada;
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 20px;
+}
+
+
+.favorites__text{
+        font-size: 16px;
+        line-height: 20px;
+        color: #000000;
+}
+
+.favorites__actions{
+        display: flex;
+}
+
+.favorites__search{
+        width: 20px;
+        cursor: pointer;
+        
+}
+
+.favorites__edit{
+        width: 20px;
+        cursor: pointer;
+        margin-right: 40px;
+}
+
+.favorites__header{
+
+}
+
+.favorites__text-blocks{
+        display: flex;
+        width: 100%;
+}
+.favorites__text-block{
+        width: 35%;
 }

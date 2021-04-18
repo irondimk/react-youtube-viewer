@@ -30,7 +30,8 @@ let FormSaveRequest = (props) => {
     return (
         <Form
             onSubmit={onSubmit}
-            initialValues={{countRequests: props.count, request: props.valueRequest}}
+            initialValues={{countRequests: props.count, request: props.valueRequest, orderType: props.orderType, 
+                name: props.name}}
             render={({ handleSubmit, reset, submitting, pristine, form }) => (
                 <form
                      onSubmit={handleSubmit}  
