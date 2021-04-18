@@ -7,24 +7,30 @@ import FindContainer from './components/Find/FindContainer';
 import Favorites from './components/Favorites/Favorites';
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
-import { authUser } from './redux/profileReducer';
+import { authUser, load } from './redux/profileReducer';
+import Preloader from './components/Preloader/Preloader';
 
 
 let mapStateToProps = (state) => {
   return{
-    isAuth: state.profile.isAuth
+    isAuth: state.profile.isAuth,
+    isLoadDone: state.profile.isLoadDone
   }
 }
 
 let App = (props) =>  {
   
   useEffect(()=>{
-    // debugger;
+    props.load();
   }, [props.isAuth])
 
   return (
+    
+
     <BrowserRouter basename={process.env.PUBLIC_URL}>
     {
+      
+      !props.isLoadDone ? <Preloader/> : 
       props.isAuth ? 
       <div> 
       <Header/>
@@ -44,4 +50,4 @@ let App = (props) =>  {
 
 
 
-export default connect(mapStateToProps, {})(App);
+export default connect(mapStateToProps, {load})(App);

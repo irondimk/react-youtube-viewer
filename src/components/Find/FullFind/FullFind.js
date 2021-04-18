@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './../Find.css';
 import FindForm from './FindForm';
 import Video from './Video/Video';
@@ -6,10 +6,23 @@ import listActive from '../../../asstets/img/view/active/list.svg';
 import gridActive from '../../../asstets/img/view/active/grid.svg';
 import listWait from '../../../asstets/img/view/wait/list.svg';
 import gridWait from '../../../asstets/img/view/wait/grid.svg';
+import SaveRequest from '../../SaveRequest/SaveRequest';
 
 // editTypeViewVideo
 
 let FullFind = (props) => {
+
+    let [isShowSaveWindow, setIsShowSaveWindow] = useState(false);
+
+    let closeModalForm = () => {
+        setIsShowSaveWindow(false); 
+    }
+
+    let openModalForm = () => {
+        setIsShowSaveWindow(true);
+    } 
+
+
     let videos = props.videos.map((elem)=> {
         return (<Video image={elem.snippet.thumbnails.medium.url} name={elem.snippet.title}
             channel={elem.snippet.channelTitle} isListShowVideo={props.isListShowVideo}
@@ -21,9 +34,7 @@ let FullFind = (props) => {
             <h2 className="fullfind-title">Поиск видео</h2>
             <FindForm downloadSnippetVideo={props.downloadSnippetVideo} 
             valueLastRequest={props.valueLastRequest}
-            addNewFavoritesRequest={props.addNewFavoritesRequest}
-            login={props.login}
-            index={props.index}
+            openModalForm={openModalForm}
             />
             <div className="fullfind__description">
             <p className="fullfind__count-results">Видео по запросу "{props.valueLastRequest }" 
@@ -48,7 +59,16 @@ let FullFind = (props) => {
             <div className={!props.isListShowVideo && "video__wrapper-grid"}>
                 {videos}
             </div>
-            
+            {isShowSaveWindow && <SaveRequest 
+            isCanEditRequest={false} 
+            closeModalForm={closeModalForm} 
+            title={"Сохранить запрос"}
+            valueRequest={props.valueLastRequest}
+            count = {12}
+            addNewFavoritesRequest={props.addNewFavoritesRequest}
+            index={props.index}
+            login={props.login}
+            />}
         </div>
     )
 }

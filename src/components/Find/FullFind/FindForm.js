@@ -12,7 +12,7 @@ let FindForm = (props) => {
     };
     
     let addNewFavorite = () => {
-        props.addNewFavoritesRequest(inputSearch.current.value, props.login, props.index)
+        props.openModalForm();
     }
 
     let inputSearch = createRef();
