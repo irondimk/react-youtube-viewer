@@ -46,9 +46,10 @@ const setVideos = (videos, nameRequest, countResults) => {
 }
 
 
-export const downloadSnippetVideo = (nameRequest, sizeRequest) => {
+export const downloadSnippetVideo = (nameRequest, sizeRequest, orderType) => {
+    debugger;
     return async (dispatch) => {
-        let response = await videoApi.getVideos(nameRequest, sizeRequest);
+        let response = await videoApi.getVideos(nameRequest, sizeRequest, orderType);
         if(response.status == 200){
             dispatch(setVideos(response.data.items, nameRequest, response.data.pageInfo.totalResults));
         }

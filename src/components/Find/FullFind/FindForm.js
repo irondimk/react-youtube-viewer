@@ -8,7 +8,8 @@ import heartImg from '../../../asstets/img/heart.svg';
 let FindForm = (props) => {
 
     let onSubmit = (value) => {
-        props.downloadSnippetVideo(value.find, 12);
+        debugger;
+        props.downloadSnippetVideo(value.find, 12, "relevance");
     };
     
     let addNewFavorite = () => {

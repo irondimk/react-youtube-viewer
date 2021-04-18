@@ -22,7 +22,7 @@ let FormSaveRequest = (props) => {
         else{
             orderType = "relevance";
         }
-        
+        debugger;
         props.action(value.request, value.name, orderType, value.countRequests, props.index, props.login);
         props.closeModalForm();
     };

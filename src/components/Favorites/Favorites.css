@@ -43,12 +43,20 @@
 }
 
 .favorites__header{
-
+        padding: 20px 20px;
+        background: #1390E5;
+        color: #FFFF;
+        font-weight: 600;
+        width: 100%;
 }
 
 .favorites__text-blocks{
         display: flex;
         width: 100%;
+}
+.favorites__text-blocks-header{
+        display: flex;
+        width: 90%;
 }
 .favorites__text-block{
         width: 35%;
