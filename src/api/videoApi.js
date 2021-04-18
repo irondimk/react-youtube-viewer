@@ -10,7 +10,6 @@ const instance = axios.create({
 
 export const videoApi = {
     getVideos(nameVideo, sizeRequest, orderType){
-        debugger;
         return instance.get(`search?part=snippet&type=video&maxResults=${sizeRequest}&order=${orderType}&q=${nameVideo}&key=AIzaSyDPMkA30rc31Y-Sou0KVPBqRKeCg4FW5dk`).then(
             response => {return response; }
         )
