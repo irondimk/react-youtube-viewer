@@ -6,7 +6,7 @@ import FindRedirect from './FindRedirect';
 
 let mapStateToProps = (state) => {
     return{
-        
+        defaultCountResults: state.youtube.defaultCountResults
     }
 }
 

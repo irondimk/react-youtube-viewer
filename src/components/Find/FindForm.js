@@ -8,7 +8,7 @@ import FormStateToRedux from '../../redux/FormStateToRedux';
 let FindForm = (props) => {
 
     let onSubmit = (value) => {
-        props.getVideos(value.find, 12, "relevance");
+        props.getVideos(value.find, props.defaultCountResults, "relevance");
     };
 
     return (

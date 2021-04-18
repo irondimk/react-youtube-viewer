@@ -6,13 +6,17 @@ const REMOVE_VIDEOS = 'REMOVE-VIDEOS';
 
 let initialState = {
     videos: null,
-    requestsListCount: 12,
+    defaultCountResults: 12,
     isHaveVideos: false,
-    // isListVisionVideo: true,
-    typesSorting: null,
     valueLastRequest: null,
-    countResults: 0,
-    isListShowVideo: true
+    isListShowVideo: true,
+    orderList:[
+        {title: "Без сортировки", parametr: "relevance"},
+        {title: "По дате", parametr: "date"},
+        {title: "По рейтингу", parametr: "rating"},
+        {title: "По названию", parametr: "title"},
+        {title: "По просмотрам", parametr: "viewCount"}
+    ]
 }
 
 let youtubeReducer = (state = initialState, action) => {
@@ -47,7 +51,6 @@ const setVideos = (videos, nameRequest, countResults) => {
 
 
 export const downloadSnippetVideo = (nameRequest, sizeRequest, orderType) => {
-    debugger;
     return async (dispatch) => {
         let response = await videoApi.getVideos(nameRequest, sizeRequest, orderType);
         if(response.status == 200){

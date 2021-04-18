@@ -12,7 +12,9 @@ let mapStateToProps = (state) => {
         countResults: state.youtube.countResults,
         isListShowVideo: state.youtube.isListShowVideo,
         login: state.profile.login,
-        index: (state.profile.profileRequests).length
+        indexNextFavoriteRequest: (state.profile.profileRequests).length,
+        defaultCountResults: state.youtube.defaultCountResults,
+        orderList: state.youtube.orderList
     }
 }
 

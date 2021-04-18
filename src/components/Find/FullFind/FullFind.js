@@ -8,7 +8,6 @@ import listWait from '../../../asstets/img/view/wait/list.svg';
 import gridWait from '../../../asstets/img/view/wait/grid.svg';
 import SaveRequest from '../../SaveRequest/SaveRequest';
 
-// editTypeViewVideo
 
 let FullFind = (props) => {
 
@@ -64,12 +63,13 @@ let FullFind = (props) => {
             closeModalForm={closeModalForm} 
             title={"Сохранить запрос"}
             valueRequest={props.valueLastRequest}
-            count = {12}
+            count = {props.defaultCountResults}
             name = ""
             orderType = "relevance"
             addNewFavoritesRequest={props.addNewFavoritesRequest}
-            index={props.index}
+            index={props.indexNextFavoriteRequest}
             login={props.login}
+            orderList={props.orderList}
             />}
         </div>
     )

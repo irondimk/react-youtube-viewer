@@ -6,13 +6,13 @@ import FormStateToRedux from '../../redux/FormStateToRedux';
 
 let FormSaveRequest = (props) => {
 
-    let orderList = [
-        {title: "Без сортировки", parametr: "relevance"},
-        {title: "По дате", parametr: "date"},
-        {title: "По рейтингу", parametr: "rating"},
-        {title: "По названию", parametr: "title"},
-        {title: "По просмотрам", parametr: "viewCount"}
-    ]
+    // let orderList = [
+    //     {title: "Без сортировки", parametr: "relevance"},
+    //     {title: "По дате", parametr: "date"},
+    //     {title: "По рейтингу", parametr: "rating"},
+    //     {title: "По названию", parametr: "title"},
+    //     {title: "По просмотрам", parametr: "viewCount"}
+    // ]
 
     let onSubmit = (value) => {
         let orderType;
@@ -22,7 +22,6 @@ let FormSaveRequest = (props) => {
         else{
             orderType = "relevance";
         }
-        debugger;
         props.action(value.request, value.name, orderType, value.countRequests, props.index, props.login);
         props.closeModalForm();
     };
@@ -58,7 +57,7 @@ let FormSaveRequest = (props) => {
                         <div className="save__input-block">
                         <label className="save__label">Сортировать по</label>
                             <Field name="orderType" id="orderType" component="select" className="save__drop-list">
-                            {orderList.map((elem)=> {
+                            {props.orderList.map((elem)=> {
                                 return <option value={elem.parametr}>{elem.title}</option>
                             })}
 

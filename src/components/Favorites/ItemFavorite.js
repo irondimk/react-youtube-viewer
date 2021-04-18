@@ -53,6 +53,7 @@ let ItemFavorite = (props) => {
             index = {props.index}
             login={props.login}
             addNewFavoritesRequest={props.editRequestUser}
+            orderList={props.orderList}
             />}
         </div>
     )

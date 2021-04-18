@@ -17,6 +17,7 @@ let SaveRequest = (props) => {
                 login = {props.login}
                 name = {props.name}
                 orderType = {props.orderType}
+                orderList = {props.orderList}
                 />
             </div>
         </div>
