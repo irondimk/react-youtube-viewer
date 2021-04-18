@@ -3,7 +3,6 @@ import { getUsers } from "../api/userApi";
 const AUTH = 'profileReducer/AUTH';
 const UNAUTH = 'profileReducer/UNAUTH';
 const ADD_FAVORITES = 'profileReducer/ADD-FAVORITES';
-const ADD_REQUESTS = 'profileReducer/ADD-REQUESTS';
 const LOAD_DONE = 'profileReducer/LOAD-DONE';
 const REMOVE_VIDEOS = 'REMOVE-VIDEOS';
 const EDIT_REQUEST = 'profileReducer/EDIT_REQUEST ';
@@ -30,7 +29,6 @@ let profileReducer = (state = initialState, action) => {
             return {...state, isLoadDone: true}
         }
         case EDIT_REQUEST: {
-            debugger;
             let newRequests = state.profileRequests.map((elem)=>{
                 if(elem.index == action.requestItem.index){
                     return action.requestItem;
@@ -92,14 +90,11 @@ export const editRequestUser = (request, name, orderType, countViews, index, log
     
     return (dispatch) => {
         dispatch(editRequest(index, request, name, orderType, countViews));
-        debugger;
         for(let key in localStorage){
             if(((key).split("-")[2] == index) && ((key).split("-")[0] == login)){
-                console.log("test");
                 localStorage.removeItem(key);
             }
         }
-        //localStorage['username']
         localStorage.setItem(login + "-url-" +  index + "-" + name + "-" + orderType + "-" + countViews, request)
         
     }
@@ -107,7 +102,7 @@ export const editRequestUser = (request, name, orderType, countViews, index, log
 
 export const addNewFavoritesRequest = (request, name, orderType, countViews, index, login) => {
     return (dispatch) => {
-        dispatch(addFavorites(index, request, name, orderType, countViews));
+        dispatch(addFavorites(index + 1, request, name, orderType, countViews));
         localStorage.setItem(login + "-url-" + (index+1) + "-" + name + "-" + orderType + "-" + countViews, request);
     }
 }
@@ -138,11 +133,7 @@ export const authUser = (name, password) => {
 }
 
 
-
-
-
 export const unAuthUser = () => {
-    
     return (dispatch) => {
         dispatch(unauth());
         localStorage.removeItem("username");
@@ -151,9 +142,7 @@ export const unAuthUser = () => {
 }
 
 
-
 export const load = () => {
-    
     return (dispatch) => {
         if(localStorage.username){
             let arrRequests = [];
