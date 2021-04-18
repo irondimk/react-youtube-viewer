@@ -25,6 +25,7 @@ color: #000000;
     display: inline-block;
     width: 100%;
     margin-bottom: 20px;
+    position: relative;
 }
 .loginForm__label{
     display: block;
@@ -43,6 +44,16 @@ color: #000000;
     color: #272727;
     font-size: 20px;
 }
+
+
+.loginForm__item-show-pas{
+    width: 30px;
+    position: absolute;
+    right: 14px;
+    top: 32px;
+    cursor: pointer;
+}
+
 
 .loginForm__submit{
     padding: 14px 60px;
