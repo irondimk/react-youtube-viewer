@@ -3,6 +3,7 @@ import { videoApi } from "../api/videoApi";
 const SET_VIDEOS = 'youtubeReducer/SET-VIDEOS';
 const EDIT_VIEW_VIDEOS = 'youtubeReducer/EDIT-VIEW-VIDEOS';
 const REMOVE_VIDEOS = 'REMOVE-VIDEOS';
+const SHOW_HIDE_PRELOADER = 'SHOW_HIDE_PRELOADER';
 
 let initialState = {
     videos: null,
@@ -16,7 +17,8 @@ let initialState = {
         {title: "По рейтингу", parametr: "rating"},
         {title: "По названию", parametr: "title"},
         {title: "По просмотрам", parametr: "viewCount"}
-    ]
+    ],
+    isShowPreloader: false
 }
 
 let youtubeReducer = (state = initialState, action) => {
@@ -29,6 +31,9 @@ let youtubeReducer = (state = initialState, action) => {
         }
         case REMOVE_VIDEOS: {
             return {...state, videos: null, isHaveVideos: false}
+        }
+        case SHOW_HIDE_PRELOADER: {
+            return {...state, isShowPreloader: action.isPreloaderShow}
         }
     }
     return state;
@@ -49,13 +54,23 @@ const setVideos = (videos, nameRequest, countResults) => {
     }
 }
 
+const showHidePreloader = (isPreloaderShow) => {
+    return{
+        type: SHOW_HIDE_PRELOADER,
+        isPreloaderShow
+    }
+}
+
 
 export const downloadSnippetVideo = (nameRequest, sizeRequest, orderType) => {
     return async (dispatch) => {
+        dispatch(showHidePreloader(true));
         let response = await videoApi.getVideos(nameRequest, sizeRequest, orderType);
         if(response.status == 200){
             dispatch(setVideos(response.data.items, nameRequest, response.data.pageInfo.totalResults));
         }
+        debugger;
+        dispatch(showHidePreloader(false));
     }
 }
 

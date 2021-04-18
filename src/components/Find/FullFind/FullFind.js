@@ -7,7 +7,7 @@ import gridActive from '../../../asstets/img/view/active/grid.svg';
 import listWait from '../../../asstets/img/view/wait/list.svg';
 import gridWait from '../../../asstets/img/view/wait/grid.svg';
 import SaveRequest from '../../SaveRequest/SaveRequest';
-
+import Preloader from '../../Preloader/Preloader';
 
 let FullFind = (props) => {
 
@@ -29,7 +29,9 @@ let FullFind = (props) => {
     })
 
     return (
+        !props.isShowPreloader ? 
         <div className="fullfind">
+        
             <h2 className="fullfind-title">Поиск видео</h2>
             <FindForm downloadSnippetVideo={props.downloadSnippetVideo} 
             valueLastRequest={props.valueLastRequest}
@@ -72,6 +74,8 @@ let FullFind = (props) => {
             orderList={props.orderList}
             />}
         </div>
+        :
+        <Preloader/>
     )
 }
 
