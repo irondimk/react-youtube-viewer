@@ -1,4 +1,4 @@
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 import Login from './components/Login/Login';
@@ -25,11 +25,8 @@ let App = (props) =>  {
   }, [props.isAuth])
 
   return (
-    
-
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <BrowserRouter basename={"/"}>
     {
-      
       !props.isLoadDone ? <Preloader/> : 
       props.isAuth ? 
       <div> 
@@ -37,14 +34,12 @@ let App = (props) =>  {
       <div className="content">
         <Route path="/find" render={()=> <FindContainer/>} />
         <Route path="/favorites" render={()=> <Favorites/>} />
+        <Route exact path="/" render={()=> <Redirect to="/find"/>} />
       </div> 
       </div> 
-      : <Login/>
+      :<Login/>
     }
-      
     </BrowserRouter>
-    
-    // 
   );
 }
 

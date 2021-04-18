@@ -64,6 +64,7 @@ const showHidePreloader = (isPreloaderShow) => {
 
 export const downloadSnippetVideo = (nameRequest, sizeRequest, orderType) => {
     return async (dispatch) => {
+        debugger;
         dispatch(showHidePreloader(true));
         let response = await videoApi.getVideos(nameRequest, sizeRequest, orderType);
         if(response.status == 200){

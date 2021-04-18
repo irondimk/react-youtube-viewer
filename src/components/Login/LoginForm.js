@@ -2,6 +2,7 @@ import React from 'react';
 import { Form, Field } from 'react-final-form';
 import './Login.css';
 import FormStateToRedux from '../../redux/FormStateToRedux';
+import { Link } from 'react-router-dom';
 
 
 
@@ -39,9 +40,11 @@ let LoginForm = (props) => {
                         </Field>
                     </div>
                     <div>
+                    
                         <button className="loginForm__submit" type="submit" disabled={submitting || pristine}>
                             Войти
                         </button>
+                    
                     </div>
                 </form>
             )}
