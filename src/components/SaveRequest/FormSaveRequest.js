@@ -1,18 +1,11 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
 import FormStateToRedux from '../../redux/FormStateToRedux';
+import { required } from '../../utils/validator';
 
 
 
 let FormSaveRequest = (props) => {
-
-    // let orderList = [
-    //     {title: "Без сортировки", parametr: "relevance"},
-    //     {title: "По дате", parametr: "date"},
-    //     {title: "По рейтингу", parametr: "rating"},
-    //     {title: "По названию", parametr: "title"},
-    //     {title: "По просмотрам", parametr: "viewCount"}
-    // ]
 
     let onSubmit = (value) => {
         let orderType;
@@ -45,12 +38,14 @@ let FormSaveRequest = (props) => {
                                 </div>
                             )}
                         </Field>
-                        <Field name={"name"} id={"name"} >
+                        <Field validate={required} name={"name"} id={"name"} >
                             {({ input, meta }) => (
                                 <div className="save__input-block">
                                     <label className="save__label"><span className="save__label_red">* </span>Название</label>
                                     <input className="save__input" {...input} type="text" />
+                                    {meta.error && meta.touched && <span className="save__input-error">{meta.error}</span>}
                                 </div>
+                                
                             )}
                         </Field>
 
@@ -60,13 +55,6 @@ let FormSaveRequest = (props) => {
                             {props.orderList.map((elem)=> {
                                 return <option value={elem.parametr}>{elem.title}</option>
                             })}
-
-                            {/* <option value="chicken">Chicken</option>
-                            <option value="ham">Ham</option>
-                            <option value="mushrooms">Mushrooms</option>
-                            <option selected value="cheese">Cheese</option>
-                            <option value="tuna">Tuna</option>
-                            <option value="pineapple">Pineapple</option> */}
                             </Field>          
           </div>
           <div className="save__input-block">
@@ -92,9 +80,6 @@ let FormSaveRequest = (props) => {
                             Сохранить
                         </button>
                             </div>
-                        
-
-                        
                     </div>
                 </form>
             )}
