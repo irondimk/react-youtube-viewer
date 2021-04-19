@@ -1,4 +1,5 @@
 import { videoApi } from "../api/videoApi";
+import { isFavorite } from "./profileReducer";
 
 const SET_VIDEOS = 'youtubeReducer/SET-VIDEOS';
 const EDIT_VIEW_VIDEOS = 'youtubeReducer/EDIT-VIEW-VIDEOS';
@@ -70,6 +71,7 @@ export const downloadSnippetVideo = (nameRequest, sizeRequest, orderType) => {
             dispatch(setVideos(response.data.items, nameRequest, response.data.pageInfo.totalResults));
         }
         dispatch(showHidePreloader(false));
+        dispatch(isFavorite(false));
     }
 }
 

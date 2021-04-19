@@ -3,6 +3,7 @@ import { Form, Field, initialValue } from 'react-final-form';
 import './../Find.css';
 import FormStateToRedux from '../../../redux/FormStateToRedux';
 import heartImg from '../../../asstets/img/searchString/heart.svg';
+import heartFillImg from '../../../asstets/img/searchString/heartfull.svg';
 
 
 let FindForm = (props) => {
@@ -32,7 +33,7 @@ let FindForm = (props) => {
                             {({ input, meta }) => (
                                 <div className="fullfind__input-block">
                                     <input ref={inputSearch}  {...input} className="fullfind__input" placeholder="Что хотите посмотреть?" />
-                                    <a href="#" onClick={addNewFavorite} className="fullfind__heart"><img src={heartImg}/></a>
+                                    <a href="#" onClick={addNewFavorite} className="fullfind__heart"><img src={props.isCurrentRequestToFavorite ? heartFillImg : heartImg}/></a>
                                 </div>
                             )}
                         </Field>

@@ -37,6 +37,7 @@ let FullFind = (props) => {
             valueLastRequest={props.valueLastRequest}
             openModalForm={openModalForm}
             defaultCountResults = {props.defaultCountResults}
+            isCurrentRequestToFavorite = {props.isCurrentRequestToFavorite}
             />
             <div className="fullfind__description">
             <p className="fullfind__count-results">Видео по запросу "{props.valueLastRequest }" 

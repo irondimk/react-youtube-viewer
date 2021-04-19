@@ -7,13 +7,15 @@ const LOAD_DONE = 'profileReducer/LOAD-DONE';
 const REMOVE_VIDEOS = 'REMOVE-VIDEOS';
 const EDIT_REQUEST = 'profileReducer/EDIT_REQUEST';
 const FALSE_LAST_TRY_AUTH = "profileReducer/FALSE_LAST_TRY_AUTH";
+const ISCURRENT_REQUEST_FAVORITE = "ISCURRENT_REQUEST_FAVORITE";
 
 let initialState = {
     isAuth: false,
     login: null,
     profileRequests: [],
     isLoadDone: false,
-    isLastTryAuthFalse: false
+    isLastTryAuthFalse: false,
+    isCurrentRequestToFavorite: false
 }
 
 let profileReducer = (state = initialState, action) => {
@@ -25,7 +27,7 @@ let profileReducer = (state = initialState, action) => {
             return {...state, login: null, isAuth: false, profileRequest: null}
         }
         case ADD_FAVORITES: {
-            return {...state, profileRequest: state.profileRequests.push(action.requestItem)}
+            return {...state, profileRequest: state.profileRequests.push(action.requestItem), isCurrentRequestToFavorite: true}
         }
         case LOAD_DONE: {
             return {...state, isLoadDone: true}
@@ -44,10 +46,20 @@ let profileReducer = (state = initialState, action) => {
         case FALSE_LAST_TRY_AUTH: {
             return {...state, isLastTryAuthFalse: action.falseOrTrue}
         }
+        case ISCURRENT_REQUEST_FAVORITE: {
+            return {...state, isCurrentRequestToFavorite: action.isFavorite};
+        }
     }
     return state;
 }
 
+
+export const isFavorite = (isFavorite) => {
+    return{
+        type: ISCURRENT_REQUEST_FAVORITE,
+        isFavorite
+    }
+}
 
 const auth = (login, arrRequests) => {
     return {

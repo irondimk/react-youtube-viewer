@@ -15,7 +15,8 @@ let mapStateToProps = (state) => {
         indexNextFavoriteRequest: (state.profile.profileRequests).length,
         defaultCountResults: state.youtube.defaultCountResults,
         orderList: state.youtube.orderList,
-        isShowPreloader: state.youtube.isShowPreloader
+        isShowPreloader: state.youtube.isShowPreloader,
+        isCurrentRequestToFavorite: state.profile.isCurrentRequestToFavorite
     }
 }
 
