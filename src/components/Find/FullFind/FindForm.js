@@ -1,4 +1,4 @@
-import React, { createRef, useState } from 'react';
+import React, { createRef, useEffect, useState } from 'react';
 import { Form, Field, initialValue } from 'react-final-form';
 import './../Find.css';
 import FormStateToRedux from '../../../redux/FormStateToRedux';
@@ -8,6 +8,12 @@ import heartFillImg from '../../../asstets/img/searchString/heartfull.svg';
 
 let FindForm = (props) => {
 
+    let [isFavoriteRequest, setisFavoriteRequest] = useState(false);
+
+    useEffect(()=>{
+        setisFavoriteRequest(props.isCurrentRequestToFavorite)
+    })
+
     let onSubmit = (value) => {
         props.downloadSnippetVideo(value.find, props.defaultCountResults, "relevance");
     };
@@ -16,7 +22,11 @@ let FindForm = (props) => {
         props.openModalForm();
     }
 
-    let inputSearch = createRef();
+    let resetFavoriteRequest = () => {
+        setisFavoriteRequest(false);
+    }
+
+
     return (
         <Form
             onSubmit={onSubmit}
@@ -29,11 +39,13 @@ let FindForm = (props) => {
                     <FormStateToRedux form="search" />
                     <div className="fullfind__form-wrapper">
                         <div className="find__string">
-                        <Field name="find">
+                        <Field name="find" onChange={resetFavoriteRequest}>
                             {({ input, meta }) => (
                                 <div className="fullfind__input-block">
-                                    <input ref={inputSearch}  {...input} className="fullfind__input" placeholder="Что хотите посмотреть?" />
-                                    <a href="#" onClick={addNewFavorite} className="fullfind__heart"><img src={props.isCurrentRequestToFavorite ? heartFillImg : heartImg}/></a>
+                                    <input {...input} className="fullfind__input" placeholder="Что хотите посмотреть?" />
+                                    <a href="#" onClick={addNewFavorite} className="fullfind__heart">
+                                        <img src={isFavoriteRequest ? heartFillImg : heartImg}/>
+                                    </a>
                                 </div>
                             )}
                         </Field>
