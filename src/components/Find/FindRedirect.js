@@ -1,8 +1,5 @@
-import { Redirect } from 'react-router-dom';
 import React from 'react';
-import Find from './EmptyFind/Find';
 import { connect } from 'react-redux';
-import {test} from '../../redux/youtubeReducer';
 import FullFindContainer from './FullFind/FullFindContainer';
 let mapStateToProps = (state) => {
     return {

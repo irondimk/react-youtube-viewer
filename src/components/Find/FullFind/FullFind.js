@@ -48,13 +48,13 @@ let FullFind = (props) => {
                 <div className="fullfind__toggles-view">
                     {props.isListShowVideo? 
                     <div>
-                        <img src={listActive} onClick={ props.editTypeViewVideo}/>
-                        <img src={gridWait} onClick={props.editTypeViewVideo}/>
+                        <img src={listActive} alt="icon type view" onClick={ props.editTypeViewVideo}/>
+                        <img src={gridWait} alt="icon type view" onClick={props.editTypeViewVideo}/>
                     </div>
                     :  
                     <div>
-                        <img src={listWait} onClick={props.editTypeViewVideo}/>
-                        <img src={gridActive} onClick={props.editTypeViewVideo}/>
+                        <img src={listWait} alt="icon type view" onClick={props.editTypeViewVideo}/>
+                        <img src={gridActive} alt="icon type view" onClick={props.editTypeViewVideo}/>
                     </div>   
                     }
                 </div>

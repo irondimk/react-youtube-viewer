@@ -1,5 +1,5 @@
-import React, { createRef, useEffect, useState } from 'react';
-import { Form, Field, initialValue } from 'react-final-form';
+import React, { useEffect, useState } from 'react';
+import { Form, Field } from 'react-final-form';
 import './../Find.css';
 import FormStateToRedux from '../../../redux/FormStateToRedux';
 import heartImg from '../../../asstets/img/searchString/heart.svg';
@@ -12,7 +12,7 @@ let FindForm = (props) => {
 
     useEffect(()=>{
         setisFavoriteRequest(props.isCurrentRequestToFavorite)
-    })
+    }, [props.isCurrentRequestToFavorite, isFavoriteRequest])
 
     let onSubmit = (value) => {
         props.downloadSnippetVideo(value.find, props.defaultCountResults, "relevance");
@@ -44,7 +44,7 @@ let FindForm = (props) => {
                                 <div className="fullfind__input-block">
                                     <input {...input} className="fullfind__input" placeholder="Что хотите посмотреть?" />
                                     <a href="#" onClick={addNewFavorite} className="fullfind__heart">
-                                        <img src={isFavoriteRequest ? heartFillImg : heartImg}/>
+                                        <img alt="link to add favorite" src={isFavoriteRequest ? heartFillImg : heartImg}/>
                                     </a>
                                 </div>
                             )}

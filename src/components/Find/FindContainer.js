@@ -1,4 +1,3 @@
-import React from 'react';
 import Find from './EmptyFind/Find';
 import {connect} from "react-redux";
 import {downloadSnippetVideo} from '../../redux/youtubeReducer';

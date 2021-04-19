@@ -36,8 +36,10 @@ let youtubeReducer = (state = initialState, action) => {
         case SHOW_HIDE_PRELOADER: {
             return {...state, isShowPreloader: action.isPreloaderShow}
         }
+        default:{
+            return state;
+        }
     }
-    return state;
 }
 
 const editType = () => {

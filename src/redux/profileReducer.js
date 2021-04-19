@@ -49,8 +49,10 @@ let profileReducer = (state = initialState, action) => {
         case ISCURRENT_REQUEST_FAVORITE: {
             return {...state, isCurrentRequestToFavorite: action.isFavorite};
         }
+        default:{
+            return state;
+        }
     }
-    return state;
 }
 
 

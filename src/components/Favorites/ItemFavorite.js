@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import seachImg from '../../asstets/img/favoritePage/search.png';
 import editImg from '../../asstets/img/favoritePage/edit.png';
 import SaveRequest from '../SaveRequest/SaveRequest';
-import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
 let ItemFavorite = (props) => {
 
@@ -37,9 +36,9 @@ let ItemFavorite = (props) => {
             </div>
         </div>
             <div className="favorites__actions">
-                <img className="favorites__edit" src={editImg} onClick={openModalForm} />
+                <img className="favorites__edit" alt="edit icon" src={editImg} onClick={openModalForm} />
                 <Link to="/find"> 
-                <img className="favorites__search" src={seachImg} onClick={findVideos} />
+                <img className="favorites__search" alt="search icon" src={seachImg} onClick={findVideos} />
                 </Link>
             </div>
             {isShowEditForm && <SaveRequest 

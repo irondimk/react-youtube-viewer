@@ -8,7 +8,7 @@ import {authUser} from '../../redux/profileReducer';
 let Login = (props) => {
     return (
         <div className="loginForm">
-            <img className="loginForm__logo" src={logo} />
+            <img alt="logo" className="loginForm__logo" src={logo} />
             <h3 className="loginForm__title">Вход</h3>
             <LoginForm authUser={props.authUser}
             isLastTryAuthFalse={props.isLastTryAuthFalse} />

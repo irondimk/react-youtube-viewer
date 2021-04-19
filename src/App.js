@@ -1,5 +1,4 @@
 import { BrowserRouter, Redirect, Route } from 'react-router-dom';
-import logo from './logo.svg';
 import './App.css';
 import Login from './components/Login/Login';
 import Header from './components/Header/Header.js';
@@ -7,7 +6,7 @@ import FindContainer from './components/Find/FindContainer';
 import Favorites from './components/Favorites/Favorites';
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
-import { authUser, load } from './redux/profileReducer';
+import { load } from './redux/profileReducer';
 import Preloader from './components/Preloader/Preloader';
 
 

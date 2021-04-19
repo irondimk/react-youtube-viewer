@@ -5,7 +5,7 @@ import './Preloader.css';
 let Preloader = () => {
     return(
     <div className="preloader">
-        <img src={PreloaderImg}/>
+        <img alt="process load" src={PreloaderImg}/>
     </div>
     )
 }

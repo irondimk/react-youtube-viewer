@@ -4,8 +4,6 @@ import './Login.css';
 import FormStateToRedux from '../../redux/FormStateToRedux';
 import closeEyePic from './../../asstets/img/loginInput/closeeye.svg';
 import openEyePic from './../../asstets/img/loginInput/openeye.svg';
-import { Link } from 'react-router-dom';
-
 
 
 let LoginForm = (props) => {
@@ -38,7 +36,7 @@ let LoginForm = (props) => {
                                 <div className="loginForm__input-block">
                                     <label className="loginForm__label">Пароль</label>
                                     <input className="loginForm__input" {...input} type={isShowPassword ? "text" :"password"}/>
-                                    <img onClick={()=> setIsShowPassword(!isShowPassword)} src={isShowPassword? openEyePic : closeEyePic} className={"loginForm__item-show-pas"}/>
+                                    <img alt="button show/hide password" onClick={()=> setIsShowPassword(!isShowPassword)} src={isShowPassword? openEyePic : closeEyePic} className={"loginForm__item-show-pas"}/>
                                 </div>
                             )}
                         </Field>

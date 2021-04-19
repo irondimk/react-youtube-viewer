@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { downloadSnippetVideo } from '../../redux/youtubeReducer';
 import { editRequestUser } from '../../redux/profileReducer';

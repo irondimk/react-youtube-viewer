@@ -7,7 +7,7 @@ let Video = (props) => {
     return (
         <div className={props.isListShowVideo? "video-list" : "video-grid"}>
             <div className={props.isListShowVideo? "video__img-block" : "video__img-block-grid"}>
-                <img className="video__img" src={props.image}/>
+                <img className="video__img" alt="preview video" src={props.image}/>
             </div>
             <div className={props.isListShowVideo ? "video__text" : "video__text-grid"}>
                 <p className={props.isListShowVideo ? "video__title" : "video__title-grid"}>{props.name}</p>
