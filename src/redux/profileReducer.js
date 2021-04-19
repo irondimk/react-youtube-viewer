@@ -5,13 +5,15 @@ const UNAUTH = 'profileReducer/UNAUTH';
 const ADD_FAVORITES = 'profileReducer/ADD-FAVORITES';
 const LOAD_DONE = 'profileReducer/LOAD-DONE';
 const REMOVE_VIDEOS = 'REMOVE-VIDEOS';
-const EDIT_REQUEST = 'profileReducer/EDIT_REQUEST ';
+const EDIT_REQUEST = 'profileReducer/EDIT_REQUEST';
+const FALSE_LAST_TRY_AUTH = "profileReducer/FALSE_LAST_TRY_AUTH";
 
 let initialState = {
     isAuth: false,
     login: null,
     profileRequests: [],
-    isLoadDone: false
+    isLoadDone: false,
+    isLastTryAuthFalse: false
 }
 
 let profileReducer = (state = initialState, action) => {
@@ -39,6 +41,9 @@ let profileReducer = (state = initialState, action) => {
             })
             return {...state, profileRequests: newRequests};
         }
+        case FALSE_LAST_TRY_AUTH: {
+            return {...state, isLastTryAuthFalse: action.falseOrTrue}
+        }
     }
     return state;
 }
@@ -49,6 +54,13 @@ const auth = (login, arrRequests) => {
        type: AUTH,
        arrRequests,
        login
+    }
+}
+
+const falseTryAuth = (falseOrTrue) =>{
+    return{
+        type: FALSE_LAST_TRY_AUTH,
+        falseOrTrue
     }
 }
 
@@ -107,28 +119,36 @@ export const addNewFavoritesRequest = (request, name, orderType, countViews, ind
     }
 }
 
+
+const getRequestsFromLocalStorage = (username) => {
+    let arrRequests = [];
+    for(let keyLS in localStorage){
+       if((keyLS).split("-")[0] == username){
+           let arrParametrs = (keyLS).split("-");
+        arrRequests.push({
+            index: arrParametrs[2],
+            request: localStorage[keyLS],
+            name: arrParametrs[3],
+            orderType: arrParametrs[4],
+            countViews: arrParametrs[5]
+        });
+       }
+    }
+    return arrRequests;
+}
+
 export const authUser = (name, password) => {
     return (dispatch) => {
         let response = getUsers();
         for(let key in response){
             if((response[key].login == name) && (response[key].password == password)){
                 localStorage.setItem("username", response[key].login);
-                let arrRequests = [];
-                for(let keyLS in localStorage){
-                   if((keyLS).split("-")[0] == name){
-                       let arrParametrs = (keyLS).split("-");
-                    arrRequests.push({
-                        index: arrParametrs[2],
-                        request: localStorage[keyLS],
-                        name: arrParametrs[3],
-                        orderType: arrParametrs[4],
-                        countViews: arrParametrs[5]
-                    });
-                   }
-                }
+                let arrRequests = getRequestsFromLocalStorage(response[key].login);
                 dispatch(auth(response[key].login, arrRequests));
-            }
+                return 1;
+            }     
         }
+        dispatch(falseTryAuth(true));
     }
 }
 
@@ -138,6 +158,7 @@ export const unAuthUser = () => {
         dispatch(unauth());
         localStorage.removeItem("username");
         dispatch(clearVideos());
+        dispatch(falseTryAuth(false));
     }
 }
 
@@ -145,19 +166,7 @@ export const unAuthUser = () => {
 export const load = () => {
     return (dispatch) => {
         if(localStorage.username){
-            let arrRequests = [];
-                for(let keyLS in localStorage){
-                   if((keyLS).split("-")[0] == localStorage.username){
-                    let arrParametrs = (keyLS).split("-");
-                    arrRequests.push({
-                        index: arrParametrs[2],
-                        request: localStorage[keyLS],
-                        name: arrParametrs[3],
-                        orderType: arrParametrs[4],
-                        countViews: arrParametrs[5]
-                    });
-                   }
-                }
+            let arrRequests = getRequestsFromLocalStorage(localStorage.username);
                 dispatch(auth(localStorage.username, arrRequests));
         }
         dispatch(doneLoad());

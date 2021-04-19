@@ -15,7 +15,6 @@ let LoginForm = (props) => {
     let onSubmit = (value) => {
         props.authUser(value.login, value.password);
     };
-
     return (
         <Form
             onSubmit={onSubmit}
@@ -43,6 +42,11 @@ let LoginForm = (props) => {
                                 </div>
                             )}
                         </Field>
+                        {props.isLastTryAuthFalse ? 
+                            <div className="loginForm__input-error">
+                                Неправильный логин или пароль
+                            </div> : <></>
+                        }
                     </div>
                     <div>
                     
