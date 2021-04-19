@@ -36,6 +36,7 @@ let FullFind = (props) => {
             <FindForm downloadSnippetVideo={props.downloadSnippetVideo} 
             valueLastRequest={props.valueLastRequest}
             openModalForm={openModalForm}
+            defaultCountResults = {props.defaultCountResults}
             />
             <div className="fullfind__description">
             <p className="fullfind__count-results">Видео по запросу "{props.valueLastRequest }" 
