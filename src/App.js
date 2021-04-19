@@ -22,7 +22,7 @@ let App = (props) =>  {
   
   useEffect(()=>{
     props.load();
-  }, [props.isAuth])
+  })
 
   return (
     <BrowserRouter basename={"/"}>
@@ -30,14 +30,18 @@ let App = (props) =>  {
       !props.isLoadDone ? <Preloader/> : 
       props.isAuth ? 
       <div> 
-      <Header/>
-      <div className="content">
-        <Route path="/find" render={()=> <FindContainer/>} />
-        <Route path="/favorites" render={()=> <Favorites/>} />
-        <Route exact path="/" render={()=> <Redirect to="/find"/>} />
+        <Header/>
+        <div className="content">
+          <Route path="/find" render={()=> <FindContainer/>} />
+          <Route path="/favorites" render={()=> <Favorites/>} />
+          <Route exact path="/" render={()=> <Redirect to="/find"/>} />
+        </div> 
       </div> 
-      </div> 
-      :<Login/>
+      :
+      <> 
+      <Route path="/" render={()=> <Login/>} />
+      </>
+      
     }
     </BrowserRouter>
   );

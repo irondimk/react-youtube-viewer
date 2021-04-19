@@ -1,7 +1,7 @@
 import React from 'react';
 import './Header.css';
 import logo from '../../asstets/img/logo.svg'
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {unAuthUser} from '../../redux/profileReducer';
 
@@ -21,7 +21,9 @@ let Header = (props) => {
                 </nav>
             </div>
             <div className="header__right">
-            <a href="#" onClick={props.unAuthUser} activeClassName="header__active-link" className="header__link">Выйти</a>
+            <Link to="/">
+                <a href="#" onClick={props.unAuthUser} activeClassName="header__active-link" className="header__link">Выйти</a>
+            </Link>
             </div>
             </div>
         </header>
