@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import seachImg from '../../asstets/img/search.png';
-import editImg from '../../asstets/img/edit.png';
+import seachImg from '../../asstets/img/favoritePage/search.png';
+import editImg from '../../asstets/img/favoritePage/edit.png';
 import SaveRequest from '../SaveRequest/SaveRequest';
 import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';

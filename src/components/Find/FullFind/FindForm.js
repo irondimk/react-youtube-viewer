@@ -2,13 +2,13 @@ import React, { createRef, useState } from 'react';
 import { Form, Field, initialValue } from 'react-final-form';
 import './../Find.css';
 import FormStateToRedux from '../../../redux/FormStateToRedux';
-import heartImg from '../../../asstets/img/heart.svg';
+import heartImg from '../../../asstets/img/searchString/heart.svg';
 
 
 let FindForm = (props) => {
 
     let onSubmit = (value) => {
-        props.downloadSnippetVideo(value.find, 12, "relevance");
+        props.downloadSnippetVideo(value.find, props.defaultCountResults, "relevance");
     };
     
     let addNewFavorite = () => {

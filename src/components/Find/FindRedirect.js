@@ -14,7 +14,7 @@ let FindRedirect = (WrappedComponent) => {
     
     let RedirectComponent = (props) => {
         return(
-            props.isHaveVideos ? <FullFindContainer/> : <WrappedComponent/>
+            props.isHaveVideos ? <FullFindContainer/> : <WrappedComponent props={props}/>
         )
     }
     let FinalComponent = connect(mapStateToProps, {})(RedirectComponent);
