@@ -9,6 +9,7 @@ let Favorites = (props) => {
 
     let itemsFavoriteRequests = props.requests.map((elem) => {
         return (<ItemFavorite
+         key={elem.index}
             index={elem.index}
             request={elem.request}
             name={elem.name}
