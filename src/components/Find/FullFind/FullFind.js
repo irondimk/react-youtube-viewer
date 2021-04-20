@@ -23,7 +23,7 @@ let FullFind = (props) => {
 
 
     let videos = props.videos.map((elem)=> {
-        return (<Video image={elem.snippet.thumbnails.medium.url} name={elem.snippet.title}
+        return (<Video key={elem.id.videoId} image={elem.snippet.thumbnails.medium.url} name={elem.snippet.title}
             channel={elem.snippet.channelTitle} isListShowVideo={props.isListShowVideo}
         />)
     })
