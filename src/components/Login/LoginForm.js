@@ -4,7 +4,7 @@ import './Login.css';
 import FormStateToRedux from '../../redux/FormStateToRedux';
 import closeEyePic from './../../asstets/img/loginInput/closeeye.svg';
 import openEyePic from './../../asstets/img/loginInput/openeye.svg';
-
+import { withRouter } from 'react-router';
 
 let LoginForm = (props) => {
 
@@ -12,7 +12,9 @@ let LoginForm = (props) => {
 
     let onSubmit = (value) => {
         props.authUser(value.login, value.password);
+        props.history.push("/find")
     };
+
     return (
         <Form
             onSubmit={onSubmit}
@@ -27,7 +29,6 @@ let LoginForm = (props) => {
                                 <div className="loginForm__input-block">
                                     <label className="loginForm__label">Логин</label>
                                     <input className="loginForm__input" {...input} type="text" />
-                                    
                                 </div>
                             )}
                         </Field>
@@ -47,11 +48,9 @@ let LoginForm = (props) => {
                         }
                     </div>
                     <div>
-                    
                         <button className="loginForm__submit" type="submit" disabled={submitting || pristine}>
                             Войти
                         </button>
-                    
                     </div>
                 </form>
             )}
@@ -59,4 +58,4 @@ let LoginForm = (props) => {
     )
 }
 
-export default LoginForm;
+export default withRouter(LoginForm);

@@ -4,14 +4,17 @@ import logo from './../../asstets/img/logo.svg';
 import LoginForm from './LoginForm';
 import { connect } from 'react-redux';
 import {authUser} from '../../redux/profileReducer';
+import { withRouter } from 'react-router';
 
 let Login = (props) => {
+
     return (
         <div className="loginForm">
             <img alt="logo" className="loginForm__logo" src={logo} />
             <h3 className="loginForm__title">Вход</h3>
             <LoginForm authUser={props.authUser}
-            isLastTryAuthFalse={props.isLastTryAuthFalse} />
+            isLastTryAuthFalse={props.isLastTryAuthFalse}
+             />
         </div>
     )
 }
@@ -22,4 +25,4 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {authUser})(Login);
+export default withRouter(connect(mapStateToProps, {authUser})(Login));

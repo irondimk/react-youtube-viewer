@@ -9,7 +9,6 @@ import { useEffect } from 'react';
 import { load } from './redux/profileReducer';
 import Preloader from './components/Preloader/Preloader';
 
-
 let mapStateToProps = (state) => {
   return{
     isAuth: state.profile.isAuth,
@@ -38,9 +37,9 @@ let App = (props) =>  {
       </div> 
       :
       <> 
-      <Route path="/" render={()=> <Login/>} />
+        <Redirect to="/login" />
+        <Route path="/login" render={()=> <Login/>} />
       </>
-      
     }
     </BrowserRouter>
   );
